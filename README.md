@@ -9,6 +9,9 @@ I'm climbing the Vim world. The most frustrated thing until now is to make vim l
 ### Make Tmux bar look nice
 Please see my `.tmux.conf` file
 
+### Use vimrc
+https://github.com/amix/vimrc
+
 ### Vim colorscheme must be aligned with your Terminator (iTerm) profile
 
 I used SpaceGray (https://github.com/ajh17/Spacegray.vim)
