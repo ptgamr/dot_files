@@ -6,6 +6,9 @@ I'm climbing the Vim world. The most frustrated thing until now is to make vim l
 - please refer to `.tmux.conf` file to see the `screen-256color` config
 - start tmux using : `tmux -2` to force it to run in 256 mode
 
+### Make Tmux bar look nice
+Please see my `.tmux.conf` file
+
 ### Vim colorscheme must be aligned with your Terminator (iTerm) profile
 
 I used SpaceGray (https://github.com/ajh17/Spacegray.vim)
