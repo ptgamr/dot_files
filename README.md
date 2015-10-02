@@ -19,4 +19,8 @@ I used SpaceGray (https://github.com/ajh17/Spacegray.vim)
 So, Terminal color profile has to be set to `Spacegray`
 And colorscheme in `.vimrc` must be set to `Spacegray`, too
 
+###Plugins:
+
+- https://github.com/wting/autojump
+
 Cheers
