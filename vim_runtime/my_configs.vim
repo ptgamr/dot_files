@@ -103,3 +103,8 @@ set smartcase       " ...unless we type a capital
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:NERDTreeWinPos = "left"
 colorscheme spacegray
+
+" ================= Quote ===============================
+:nnoremap <Leader>q" ciw""<Esc>P
+:nnoremap <Leader>q' ciw''<Esc>P
+:nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
