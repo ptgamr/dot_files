@@ -68,5 +68,24 @@ noremap <leader>0 :tablast<cr>
 let g:syntastic_check_on_open = 0
 let g:syntastic_html_checkers=['']
 
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
+" ======== Quick switch buffer ========
+" does not work due to yankring plugins
+" nnoremap <C-n> :bnext<CR>
+" nnoremap <C-p> :bprevious<CR>
+
+
+
+" ================== Lazy Moving ===============================
+" https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard
+
+" Normal mode
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+
+" Insert mode
+inoremap <C-j> <ESC>:m .+1<CR>==gi
+inoremap <C-k> <ESC>:m .-2<CR>==gi
+
+" Visual mode
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
