@@ -77,15 +77,22 @@ let g:syntastic_html_checkers=['']
 
 " ================== Lazy Moving ===============================
 " https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard
+" Comment out as conflicted with buffer switching
 
 " Normal mode
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
+" nnoremap <C-j> :m .+1<CR>==
+" nnoremap <C-k> :m .-2<CR>==
 
 " Insert mode
-inoremap <C-j> <ESC>:m .+1<CR>==gi
-inoremap <C-k> <ESC>:m .-2<CR>==gi
+" inoremap <C-j> <ESC>:m .+1<CR>==gi
+" inoremap <C-k> <ESC>:m .-2<CR>==gi
 
 " Visual mode
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+" vnoremap <C-j> :m '>+1<CR>gv=gv
+" vnoremap <C-k> :m '<-2<CR>gv=gv
+
+
+" BUFFERS
+nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bn :bn<CR>
+
