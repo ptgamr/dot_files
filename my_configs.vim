@@ -41,11 +41,15 @@ set smartcase       " ...unless we type a capital
 let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
 let g:NERDTreeWinPos = "left"
 
-" ================ Replace with yanked text ============
+" ================ REPLACE WORD WITH YANKED TEXT ============
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 " viw,p
 
-xnoremap <leader>p "_dP
+" 1st way
+" xnoremap <Leader>p "_dP
+
+" 2nd way
+nnoremap <Leader>pw viwpgvy
 
 " ================= Quote ===============================
 :nnoremap <Leader>q" ciw""<Esc>P
@@ -54,16 +58,16 @@ xnoremap <leader>p "_dP
 
 
 " =============== Go to tab by number ==================
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+noremap <Leader>1 1gt
+noremap <Leader>2 2gt
+noremap <Leader>3 3gt
+noremap <Leader>4 4gt
+noremap <Leader>5 5gt
+noremap <Leader>6 6gt
+noremap <Leader>7 7gt
+noremap <Leader>8 8gt
+noremap <Leader>9 9gt
+noremap <Leader>0 :tablast<cr>
 
 let g:syntastic_check_on_open = 0
 let g:syntastic_html_checkers=['']
@@ -95,4 +99,7 @@ let g:syntastic_html_checkers=['']
 " BUFFERS
 nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bn :bn<CR>
+
+" REVEAL CURRENT BUFFER IN NERDTREE
+nmap <Leader>n :NERDTreeFind<CR>
 
