@@ -103,3 +103,9 @@ nnoremap <Leader>bn :bn<CR>
 " REVEAL CURRENT BUFFER IN NERDTREE
 nmap <Leader>n :NERDTreeFind<CR>
 
+" Better solarized color
+" http://ethanschoonover.com/solarized/vim-colors-solarized
+syntax enable
+set background=dark
+colorscheme solarized
+
