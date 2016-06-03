@@ -109,3 +109,9 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" CUSTOM COMMAND
+com! FormatJSON %!python -m json.tool
+com! ToggleIndentWidth4 :set tabstop=4 shiftwidth=4 expandtab
+com! ToggleIndentWidth2 :set tabstop=2 shiftwidth=2 expandtab
+
+
