@@ -114,4 +114,10 @@ com! FormatJSON %!python -m json.tool
 com! ToggleIndentWidth4 :set tabstop=4 shiftwidth=4 expandtab
 com! ToggleIndentWidth2 :set tabstop=2 shiftwidth=2 expandtab
 
+" Copy current buffer path relative to root of VIM session to system clipboard
+nnoremap <Leader>yp :let @*=expand("%")<cr>:echo "Copied file name to clipboard"<cr>
+" Copy current filename to system clipboard
+nnoremap <Leader>yd :let @*=expand("%:p")<cr>:echo "Copied file directory to clipboard"<cr>
+
+
 
