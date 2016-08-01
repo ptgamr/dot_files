@@ -71,6 +71,8 @@ noremap <Leader>0 :tablast<cr>
 
 let g:syntastic_check_on_open = 0
 let g:syntastic_html_checkers=['']
+" For TypeScript http://stackoverflow.com/questions/34102184/use-tsconfig-json-for-tsc-with-syntastic-in-vim
+let g:syntastic_typescript_tsc_fname = ''
 
 " ======== Quick switch buffer ========
 " does not work due to yankring plugins
