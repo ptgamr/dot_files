@@ -22,5 +22,6 @@ And colorscheme in `.vimrc` must be set to `Spacegray`, too
 ###Plugins:
 
 - https://github.com/wting/autojump
+- https://github.com/easymotion/vim-easymotion
 
 Cheers
