@@ -111,8 +111,9 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-" if using Base16-shell & Base16-vim
+" -- if using Base16-shell & Base16-vim
 let base16colorspace=256  " Access colors present in 256 colorspace
+" for better highlight of cursor blink when encounter matching tag - which is hard to see
 hi MatchParen cterm=none ctermbg=green ctermfg=blue
 colorscheme base16-default-dark
 
