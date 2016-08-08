@@ -113,9 +113,9 @@ colorscheme solarized
 
 " -- if using Base16-shell & Base16-vim
 let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-default-dark
 " for better highlight of cursor blink when encounter matching tag - which is hard to see
 hi MatchParen cterm=none ctermbg=green ctermfg=blue
-colorscheme base16-default-dark
 
 " CUSTOM COMMAND
 com! FormatJSON %!python -m json.tool
