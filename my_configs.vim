@@ -40,6 +40,7 @@ set smartcase       " ...unless we type a capital
 
 let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
 let g:NERDTreeWinPos = "left"
+autocmd FileType javascript let b:syntastic_checkers = (findfile('.eslintrc', '.;') != '' || findfile('.jshintrc', '.;') != '') ? ['eslint'] : ['standard']
 
 " ================ REPLACE WORD WITH YANKED TEXT ============
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
