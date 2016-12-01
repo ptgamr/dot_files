@@ -1,6 +1,11 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+set nowrap
+
+let g:bufExplorerSortBy='mru'
+map <leader>o :BufExplorerVerticalSplit<cr>
+
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -14,10 +19,11 @@ set autoread                    "Reload files changed outside vim
 
 
 " ============ Yank to clipboard on MAC =======
-set clipboard=unnamed
+" set clipboard=unnamedplus
 
 
 set number "Line numbers are good
+set nowrap
 
 " ================ Indentation ======================
 set autoindent
@@ -38,19 +44,24 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
+"let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+"let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
 let g:NERDTreeWinPos = "left"
-autocmd FileType javascript let b:syntastic_checkers = (findfile('.eslintrc', '.;') != '' || findfile('.jshintrc', '.;') != '') ? ['eslint'] : ['standard']
+"let g:syntastic_javascript_checkers = ['standard']
+autocmd FileType javascript let b:syntastic_checkers = (findfile('.eslintrc', '.;') != '' || findfile('.eslintrc.json', '.;') != '') ? ['eslint'] : ['jshint']
 
-" ================ REPLACE WORD WITH YANKED TEXT ============
+" ================ Replace with yanked text ============
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
 " viw,p
 
-" 1st way
-" xnoremap <Leader>p "_dP
-
-" 2nd way
+" xnoremap <leader>p "_dP
+" REPLACE WORD WITH YANKED TEXT
 nnoremap <Leader>pw viwpgvy
+
+" BUFFERS
+nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bn :bn<CR>
 
 " ================= Quote ===============================
 :nnoremap <Leader>q" ciw""<Esc>P
@@ -59,20 +70,19 @@ nnoremap <Leader>pw viwpgvy
 
 
 " =============== Go to tab by number ==================
-noremap <Leader>1 1gt
-noremap <Leader>2 2gt
-noremap <Leader>3 3gt
-noremap <Leader>4 4gt
-noremap <Leader>5 5gt
-noremap <Leader>6 6gt
-noremap <Leader>7 7gt
-noremap <Leader>8 8gt
-noremap <Leader>9 9gt
-noremap <Leader>0 :tablast<cr>
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 let g:syntastic_check_on_open = 0
 let g:syntastic_html_checkers=['']
-" For TypeScript http://stackoverflow.com/questions/34102184/use-tsconfig-json-for-tsc-with-syntastic-in-vim
 let g:syntastic_typescript_tsc_fname = ''
 
 " ======== Quick switch buffer ========
@@ -84,49 +94,69 @@ let g:syntastic_typescript_tsc_fname = ''
 
 " ================== Lazy Moving ===============================
 " https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard
-" Comment out as conflicted with buffer switching
 
 " Normal mode
-" nnoremap <C-j> :m .+1<CR>==
-" nnoremap <C-k> :m .-2<CR>==
+"nnoremap <C-j> :m .+1<CR>==
+"nnoremap <C-k> :m .-2<CR>==
 
 " Insert mode
-" inoremap <C-j> <ESC>:m .+1<CR>==gi
-" inoremap <C-k> <ESC>:m .-2<CR>==gi
+"inoremap <C-j> <ESC>:m .+1<CR>==gi
+"inoremap <C-k> <ESC>:m .-2<CR>==gi
 
 " Visual mode
-" vnoremap <C-j> :m '>+1<CR>gv=gv
-" vnoremap <C-k> :m '<-2<CR>gv=gv
+"vnoremap <C-j> :m '>+1<CR>gv=gv
+"vnoremap <C-k> :m '<-2<CR>gv=gv
 
-
-" BUFFERS
-nnoremap <Leader>bp :bp<CR>
-nnoremap <Leader>bn :bn<CR>
 
 " REVEAL CURRENT BUFFER IN NERDTREE
-nmap <Leader>n :NERDTreeFind<CR>
+nnoremap <Leader>n :NERDTreeFind<CR>
+
+" Yank fullpath to the + register
+nnoremap <Leader>yfp :let @+=expand("%:p")<CR>
+
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+:imap jk <Esc>
 
 " Better solarized color
 " http://ethanschoonover.com/solarized/vim-colors-solarized
-syntax enable
+" syntax enable
+" set background=dark
+" colorscheme solarized
+
+
+syntax on
+"let g:solarized_termcolors=16
+"let base16colorspace=256
+"set t_Co=256
 set background=dark
 colorscheme solarized
-
-" -- if using Base16-shell & Base16-vim
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-default-dark
-" for better highlight of cursor blink when encounter matching tag - which is hard to see
-hi MatchParen cterm=none ctermbg=green ctermfg=blue
 
 " CUSTOM COMMAND
 com! FormatJSON %!python -m json.tool
 com! ToggleIndentWidth4 :set tabstop=4 shiftwidth=4 expandtab
 com! ToggleIndentWidth2 :set tabstop=2 shiftwidth=2 expandtab
 
-" Copy current buffer path relative to root of VIM session to system clipboard
-nnoremap <Leader>yp :let @*=expand("%")<cr>:echo "Copied file name to clipboard"<cr>
-" Copy current filename to system clipboard
-nnoremap <Leader>yd :let @*=expand("%:p")<cr>:echo "Copied file directory to clipboard"<cr>
+function! TabCloseRight(bang)
+    let cur=tabpagenr()
+    while cur < tabpagenr('$')
+        exe 'tabclose' . a:bang . ' ' . (cur + 1)
+    endwhile
+endfunction
 
+function! TabCloseLeft(bang)
+    while tabpagenr() > 1
+        exe 'tabclose' . a:bang . ' 1'
+    endwhile
+endfunction
 
+command! -bang Tabcloseright call TabCloseRight('<bang>')
+command! -bang Tabcloseleft call TabCloseLeft('<bang>')
 
+autocmd FileType typescript call s:typescript_filetype_settings()
+function! s:typescript_filetype_settings()
+  set makeprg=tsc
+endfunction
+
+let g:user_emmet_leader_key='<C-Z>'
+
+set rnu
