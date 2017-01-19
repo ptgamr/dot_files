@@ -49,7 +49,30 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 "let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
 let g:NERDTreeWinPos = "left"
 "let g:syntastic_javascript_checkers = ['standard']
-autocmd FileType javascript let b:syntastic_checkers = (findfile('.eslintrc', '.;') != '' || findfile('.eslintrc.json', '.;') != '') ? ['eslint'] : ['jshint']
+"autocmd FileType javascript let b:syntastic_checkers = (findfile('.eslintrc', '.;') != '' || findfile('.eslintrc.json', '.;') != '') ? ['eslint'] : ['jshint']
+
+" =============== ESLint ============================
+" Use the locally installed eslint first, fallback to global one
+" https://github.com/airbnb/javascript/issues/465
+function! SyntasticESlintChecker()
+  let l:npm_bin = ''
+  let l:eslint = 'eslint'
+
+  if executable('npm')
+      let l:npm_bin = split(system('npm bin'), '\n')[0]
+  endif
+
+  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+    let l:eslint = l:npm_bin . '/eslint'
+  endif
+
+  let b:syntastic_javascript_eslint_exec = l:eslint
+endfunction
+
+
+let g:syntastic_javascript_checkers = ["eslint"]
+
+autocmd FileType javascript :call SyntasticESlintChecker()
 
 " ================ Replace with yanked text ============
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
