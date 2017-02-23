@@ -104,6 +104,17 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym mod1+1 workspace 11
+bindsym mod1+2 workspace 12
+bindsym mod1+3 workspace 13
+bindsym mod1+4 workspace 14
+bindsym mod1+5 workspace 15
+bindsym mod1+6 workspace 16
+bindsym mod1+7 workspace 17
+bindsym mod1+8 workspace 18
+bindsym mod1+9 workspace 19
+bindsym mod1+0 workspace 20
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -115,6 +126,17 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym mod1+shift+1 move container to workspace 11
+bindsym mod1+shift+2 move container to workspace 12
+bindsym mod1+shift+3 move container to workspace 13
+bindsym mod1+shift+4 move container to workspace 14
+bindsym mod1+shift+5 move container to workspace 15
+bindsym mod1+shift+6 move container to workspace 16
+bindsym mod1+shift+7 move container to workspace 17
+bindsym mod1+shift+8 move container to workspace 18
+bindsym mod1+shift+9 move container to workspace 19
+bindsym mod1+shift+0 move container to workspace 20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -157,9 +179,29 @@ bar {
         tray_output primary
 }
 
-bindsym $mod+shift+x exec i3lock -i /home/anh/Pictures/2.png
+# bindsym $mod+shift+x exec i3lock -i /home/anh/Pictures/2.png -t
+bindsym $mod+shift+x exec i3lock -c 555555
 
 bindsym $mod+Control+Left workspace prev_on_output
 bindsym $mod+Control+Right workspace next_on_output
 
+bindsym Print exec scrot $HOME/Pictures/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Print exec scrot -u $HOME/Pictures/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+Print exec scrot -s $HOME/Pictures/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+
+
+# switch to workspace
+bindsym XF86Launch5 workspace 1
+bindsym XF86Launch6 workspace 2
+bindsym XF86Launch7 workspace 3
+bindsym XF86Launch8 workspace 4
+bindsym XF86Launch9 workspace 5
+
+bindsym XF86Favorites workspace 10
+bindsym XF86Mail workspace 9
+
+bindsym XF86Back workspace prev_on_output
+bindsym XF86Forward workspace next_on_output
+
 exec_always xrandr --output VIRTUAL1 --off --output DP2 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --mode 1920x1080 --pos 1920x0 --rotate normal
+#exec_always xrandr --output VIRTUAL1 --off --output DP2 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate left --output VGA1 --mode 1920x1080 --pos 1080x448 --rotate normal
