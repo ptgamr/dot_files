@@ -54,6 +54,15 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# Alt+Tab will change window focus
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+
+# Mod + Tab will cycle through workspace
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
