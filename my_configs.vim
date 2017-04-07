@@ -183,3 +183,8 @@ endfunction
 let g:user_emmet_leader_key='<C-Z>'
 
 set rnu
+
+set foldlevel=99
+set foldcolumn=0
+nnoremap <Space> za
+vnoremap <Space> za
