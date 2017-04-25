@@ -19,9 +19,43 @@ I used SpaceGray (https://github.com/ajh17/Spacegray.vim)
 So, Terminal color profile has to be set to `Spacegray`
 And colorscheme in `.vimrc` must be set to `Spacegray`, too
 
-###Plugins:
+### Plugins:
 
 - https://github.com/wting/autojump
 - https://github.com/easymotion/vim-easymotion
+
+### Using Ag/Ack
+http://conqueringthecommandline.com/book/ack_ag#cid17
+
+```
+# search in folder
+ag DHH guides/
+
+# regular expression search
+ag readme$
+
+# literal expression search
+# -Q flag. This will search for the exact pattern
+ag -Q .rb railties/CHANGELOG.md
+ 
+# Listing files
+ag DHH -l
+
+# Case Insensitive Searches (-i)
+ag readme -l -i
+
+# Scoping to Files (-G)
+ag readme -l -i -G ec$
+
+# Ignore Paths
+# The –ignore-dir Flag
+ag readme -l --ignore-dir=railties/lib
+
+# We can easily chain multiple –ignore-dir calls together to filter our results further
+ag readme -l --ignore-dir=railties/lib --ignore-dir=guides/code
+
+# Despite its name, the –ignore-dir flag will also let us filter out particular files, not just directories
+ag readme -l --ignore-dir="*.rb"
+```
 
 Cheers
