@@ -43,10 +43,16 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -54,20 +60,11 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Alt+Tab will change window focus
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
-
-# Mod + Tab will cycle through workspace
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
-
-
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -76,7 +73,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -113,17 +110,6 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-bindsym mod1+1 workspace 11
-bindsym mod1+2 workspace 12
-bindsym mod1+3 workspace 13
-bindsym mod1+4 workspace 14
-bindsym mod1+5 workspace 15
-bindsym mod1+6 workspace 16
-bindsym mod1+7 workspace 17
-bindsym mod1+8 workspace 18
-bindsym mod1+9 workspace 19
-bindsym mod1+0 workspace 20
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -135,17 +121,6 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-
-bindsym mod1+shift+1 move container to workspace 11
-bindsym mod1+shift+2 move container to workspace 12
-bindsym mod1+shift+3 move container to workspace 13
-bindsym mod1+shift+4 move container to workspace 14
-bindsym mod1+shift+5 move container to workspace 15
-bindsym mod1+shift+6 move container to workspace 16
-bindsym mod1+shift+7 move container to workspace 17
-bindsym mod1+shift+8 move container to workspace 18
-bindsym mod1+shift+9 move container to workspace 19
-bindsym mod1+shift+0 move container to workspace 20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -162,10 +137,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -178,39 +153,59 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+bindsym $mod+Ctrl+Shift+Right resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Up resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Down resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
+
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+# bar {
+#        status_command i3status
+#        tray_output primary
+#}
+
+exec --no-startup-id "synclient NaturalScrolling=1 VertScrollDelta=-113"
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
 bar {
-        #status_command i3status
+	#position top
+        # status_command i3status -c ~/.i3/i3status.conf
         status_command py3status -c ~/.i3/i3status.conf
-        tray_output primary
+	#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+	#font pango: Ubuntu Mono 12
+	colors {
+        	# Whole color settings
+        	background #000000
+        	statusline #ffffff
+        	separator  #666666
+
+        	# Type             border  background font
+        	focused_workspace  #3465A4 #3465A4 #ffffff
+        	active_workspace   #5f676a #5f676a #ffffff
+        	inactive_workspace #222222 #222222 #888888
+        	urgent_workspace   #aa0000 #990000 #ffffff
+    }
 }
 
-# bindsym $mod+shift+x exec i3lock -i /home/anh/Pictures/2.png -t
-bindsym $mod+shift+x exec i3lock -c 555555
+client.focused          #3465A4 #3465A4 #ffffff #3465A4
 
-bindsym $mod+Control+Left workspace prev_on_output
-bindsym $mod+Control+Right workspace next_on_output
+exec --no-startup-id "nm-applet"
+#exec --no-startup-id dropbox start
 
-bindsym Print exec scrot $HOME/Pictures/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym $mod+Print exec scrot -u $HOME/Pictures/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym $mod+Shift+Print exec scrot -s $HOME/Pictures/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+p exec "xtrlock"
 
+bindsym $mod+m bar mode toggle
+bindsym $mod+Shift+x exec i3lock
 
-# switch to workspace
-bindsym XF86Launch5 workspace 1
-bindsym XF86Launch6 workspace 2
-bindsym XF86Launch7 workspace 3
-bindsym XF86Launch8 workspace 4
-bindsym XF86Launch9 workspace 5
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && killall notify-osd && notify-send "Volume up `amixer -D pulse sget Master | grep -oE -m1 "[[:digit:]]*%"`" && paplay /usr/share/sounds/ubuntu/stereo/message.ogg
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && killall notify-osd && notify-send "Volume down `amixer -D pulse sget Master | grep -oE -m1 "[[:digit:]]*%"`" && paplay /usr/share/sounds/ubuntu/stereo/message.ogg
+bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
 
-bindsym XF86Favorites workspace 10
-bindsym XF86Mail workspace 9
-
-bindsym XF86Back workspace prev_on_output
-bindsym XF86Forward workspace next_on_output
-
-exec_always xrandr --output VIRTUAL1 --off --output DP2 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --mode 1920x1080 --pos 1920x0 --rotate normal
-#exec_always xrandr --output VIRTUAL1 --off --output DP2 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate left --output VGA1 --mode 1920x1080 --pos 1080x448 --rotate normal
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && killall notify-osd && notify-send "Brightness up `xbacklight | grep -oP '.*?(?=\.)'`%"
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && killall notify-osd && notify-send "Brightness down `xbacklight | grep -oP '.*?(?=\.)'`%"
