@@ -17,6 +17,7 @@ set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set autoread                    "Reload files changed outside vim
 
+set clipboard=unnamed
 
 " ============ Yank to clipboard on MAC =======
 " set clipboard=unnamedplus
@@ -69,10 +70,29 @@ function! SyntasticESlintChecker()
   let b:syntastic_javascript_eslint_exec = l:eslint
 endfunction
 
+function! SyntasticTSlintChecker()
+  let l:npm_bin = ''
+  let l:tslint = 'tslint'
+
+  if executable('npm')
+      let l:npm_bin = split(system('npm bin'), '\n')[0]
+  endif
+
+  if strlen(l:npm_bin) && executable(l:npm_bin . '/tslint')
+    let l:tslint = l:npm_bin . '/tslint'
+  endif
+
+  let b:syntastic_typescript_tslint_exec = l:tslint
+endfunction
+
 
 let g:syntastic_javascript_checkers = ["eslint"]
+let g:tsuquyomi_disable_quickfix = 1
+
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint'] " You shouldn't use 'tsc' checker.
 
 autocmd FileType javascript :call SyntasticESlintChecker()
+autocmd FileType typescript :call SyntasticTSlintChecker()
 
 " ================ Replace with yanked text ============
 " http://vim.wikia.com/wiki/Replace_a_word_with_yanked_text
@@ -154,6 +174,11 @@ syntax on
 set background=dark
 colorscheme solarized
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 " CUSTOM COMMAND
 com! FormatJSON %!python -m json.tool
 com! ToggleIndentWidth4 :set tabstop=4 shiftwidth=4 expandtab
@@ -184,23 +209,18 @@ let g:user_emmet_leader_key='<C-Z>'
 
 set rnu
 
-set foldlevel=99
-set foldcolumn=0
-nnoremap <Space> za
-vnoremap <Space> za
-
-map <Leader> <Plug>(easymotion-prefix)
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
+"map <Leader> <Plug>(easymotion-prefix)
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap <Leader>s <Plug>(easymotion-overwin-f)
+"nmap <Leader>s <Plug>(easymotion-overwin-f)
 " fix conflict with spellcheck
-nmap <Leader>ss <Plug>(easymotion-overwin-f)s
+"nmap <Leader>ss <Plug>(easymotion-overwin-f)s
 " o
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-"nmap <Leader>s <Plug>(easymotion-overwin-f2)
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
 " Turn on case insensitive feature
 "let g:EasyMotion_smartcase = 1
@@ -209,4 +229,8 @@ nmap <Leader>ss <Plug>(easymotion-overwin-f)s
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+let g:jsx_ext_required = 0
+set foldlevelstart=5
+set foldcolumn=0
 
+:noremap A @a
