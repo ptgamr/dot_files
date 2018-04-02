@@ -46,7 +46,8 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
 "let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard && git submodule foreach "git ls-files -co --exclude-standard | while read i; do echo \"\$path/\$i\"; done"']
 "let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
 let g:NERDTreeWinPos = "left"
 "let g:syntastic_javascript_checkers = ['standard']
