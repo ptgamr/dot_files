@@ -9,6 +9,18 @@ I'm climbing the Vim world. The most frustrated thing until now is to make vim l
 ### Make Tmux bar look nice
 Please see my `.tmux.conf` file
 
+### Improve fonts rendering with Infinality
+To install on Ubuntu:
+```
+$ sudo add-apt-repository ppa:no1wantdthisname/ppa
+$ sudo apt-get update
+$ sudo apt-get install  fontconfig-infinality freetype
+```
+Run the following commands to choose and apply a font configuration:
+```
+$ sudo /etc/fonts/infinality/infctl.sh setstyle
+```
+
 ### Use vimrc
 https://github.com/amix/vimrc
 
