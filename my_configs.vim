@@ -235,3 +235,8 @@ set foldlevelstart=5
 set foldcolumn=0
 
 :noremap A @a
+
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
