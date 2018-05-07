@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-    ~/.i3/i3lock-fancy/lock -- scrot
+    i3lock
 }
 
 case "$1" in
@@ -11,7 +11,7 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        lock && systemctl suspend
+        zenity --question --text "Did you turn off all GPU process ???" && lock && systemctl suspend
         ;;
     hibernate)
         lock && systemctl hibernate
