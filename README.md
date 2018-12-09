@@ -1,3 +1,16 @@
+## NOTES FOR VIM8
+
+Remove smooth scroll
+```
+rm -rf comfortable-motion.vim
+```
+
+Install base16-vim
+```
+https://github.com/chriskempson/base16-vim.git
+```
+
+
 # My Tmux & Vim configuration
 
 I'm climbing the Vim world. The most frustrated thing until now is to make vim looks nice. However I'm getting there :)
