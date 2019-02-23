@@ -18,12 +18,12 @@ Recompile Vim with Python support: https://github.com/Valloric/YouCompleteMe/wik
 cd ~
 git clone https://github.com/vim/vim.git
 cd vim
-./configure --with-features=huge \
+./configure --with-x --with-features=huge \
             --enable-multibyte \
 	    --enable-pythoninterp=yes \
-	    --with-python-config-dir=/usr/lib/python2.7/config \ # pay attention here check directory correct
+	    --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \ # pay attention here, check if dir correct
 	    --enable-python3interp=yes \
-	    --with-python3-config-dir=/usr/lib/python3.6/config \
+	    --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \ # pay attention
 	    --enable-perlinterp=yes \
 	    --enable-luainterp=yes \
             --enable-cscope \
