@@ -28,6 +28,8 @@ cd vim
 	    --enable-luainterp=yes \
             --enable-cscope \
 	   --prefix=/usr/local
+
+sudo make install
 ```
 
 And then go to `~/.vim_runtime/my_plugins`:
