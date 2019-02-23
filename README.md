@@ -10,6 +10,36 @@ Install base16-vim
 https://github.com/chriskempson/base16-vim.git
 ```
 
+### INSTALL YouCompleteMe
+
+Recompile Vim with Python support: https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
+
+```
+cd ~
+git clone https://github.com/vim/vim.git
+cd vim
+./configure --with-features=huge \
+            --enable-multibyte \
+	    --enable-pythoninterp=yes \
+	    --with-python-config-dir=/usr/lib/python2.7/config \ # pay attention here check directory correct
+	    --enable-python3interp=yes \
+	    --with-python3-config-dir=/usr/lib/python3.6/config \
+	    --enable-perlinterp=yes \
+	    --enable-luainterp=yes \
+            --enable-cscope \
+	   --prefix=/usr/local
+```
+
+And then go to `~/.vim_runtime/my_plugins`:
+
+```
+git clone https://github.com/Valloric/YouCompleteMe.git
+python3 install.py --all
+
+or 
+
+python3 install.py --ts-completer # for TypeScript only
+```
 
 # My Tmux & Vim configuration
 
