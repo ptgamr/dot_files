@@ -50,6 +50,10 @@ or
 python3 install.py --ts-completer # for TypeScript only
 ```
 
+- JavaScript and TypeScript support: install Node.js and npm, navigate to `YouCompleteMe/third_party/ycmd` and run `npm install -g --prefix third_party/tsserver typescript`.
+
+
+
 # My Tmux & Vim configuration
 
 I'm climbing the Vim world. The most frustrated thing until now is to make vim looks nice. However I'm getting there :)
