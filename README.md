@@ -10,7 +10,9 @@ Install base16-vim
 https://github.com/chriskempson/base16-vim.git
 ```
 
-Notes: because of issue https://github.com/chriskempson/base16-vim/issues/197 , use this fork instead until the PR landed on master: https://github.com/danielwe/base16-vim
+Notes: 
+because of issue https://github.com/chriskempson/base16-vim/issues/197 , 
+use this fork instead until the PR landed on master: https://github.com/danielwe/base16-vim
 
 ### INSTALL YouCompleteMe
 
