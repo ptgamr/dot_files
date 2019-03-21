@@ -53,7 +53,7 @@ let g:tsuquyomi_disable_quickfix = 1
 
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
-\ 'typescript': ['eslint', 'tslint', 'tsserver'],
+\ 'typescript': ['eslint', 'tsserver'],
 \ 'python': []
 \}
 let g:ale_open_list = 1
