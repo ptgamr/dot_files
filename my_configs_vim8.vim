@@ -9,7 +9,6 @@ map <leader>o :BufExplorerVerticalSplit<cr>
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
-autocmd BufWritePre * :%s/\s\+$//e
 
 set showcmd
 set showmode                    "Show current mode down the bottom
@@ -54,7 +53,7 @@ let g:tsuquyomi_disable_quickfix = 1
 
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
-\ 'typescript': ['tslint', 'tsserver'],
+\ 'typescript': ['eslint', 'tslint', 'tsserver'],
 \ 'python': []
 \}
 let g:ale_open_list = 1
@@ -91,10 +90,6 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-
-let g:syntastic_check_on_open = 0
-let g:syntastic_html_checkers=['']
-let g:syntastic_typescript_tsc_fname = ''
 
 " ======== Quick switch buffer ========
 " does not work due to yankring plugins
@@ -168,10 +163,10 @@ endfunction
 command! -bang Tabcloseright call TabCloseRight('<bang>')
 command! -bang Tabcloseleft call TabCloseLeft('<bang>')
 
-autocmd FileType typescript call s:typescript_filetype_settings()
-function! s:typescript_filetype_settings()
-  set makeprg=tsc
-endfunction
+" autocmd FileType typescript call s:typescript_filetype_settings()
+" function! s:typescript_filetype_settings()
+"   set makeprg=tsc
+" endfunction
 
 let g:user_emmet_leader_key='<C-Z>'
 
@@ -213,3 +208,10 @@ endif
 
 hi Search ctermbg=LightYellow
 hi Search ctermfg=Red
+
+" TYPESCRIPT - YouCompleteMe
+let g:ycm_auto_trigger=1
+" keybind : from http://blog.jobbole.com/58978/
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
