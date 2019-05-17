@@ -56,6 +56,8 @@ python3 install.py --ts-completer # for TypeScript only
 
 - JavaScript and TypeScript support: install Node.js and npm, navigate to `YouCompleteMe/third_party/ycmd` and run `npm install -g --prefix third_party/tsserver typescript`.
 
+- Keep an eye on the version of typescript inside `YouCompleteMe/third_party/ycmd/third_party/tsserver`
+
 
 
 # My Tmux & Vim configuration
