@@ -210,8 +210,13 @@ hi Search ctermbg=LightYellow
 hi Search ctermfg=Red
 
 " TYPESCRIPT - YouCompleteMe
-let g:ycm_auto_trigger=1
+"let g:ycm_auto_trigger=1
 " keybind : from http://blog.jobbole.com/58978/
+let g:ale_open_list = 0
+set completeopt-=preview " Disable the preview window on completion
+" let g:ycm_add_preview_to_completeopt = 0
+
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>ff :YcmCompleter FixIt<CR>
