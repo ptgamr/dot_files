@@ -49,14 +49,20 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --recurse-submodules'
 " let g:ctrlp_custom_ignore = 'build\|bower_components\|node_modules\|DS_Store\|git'
 let g:NERDTreeWinPos = "left"
 
-let g:tsuquyomi_disable_quickfix = 1
-
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
-\ 'typescript': ['eslint', 'tsserver'],
+\ 'typescript': ['eslint'],
 \ 'python': []
 \}
+
+let g:ale_fixers = {
+\ 'javascript': ['prettier'],
+\ 'typescript': ['prettier'],
+\}
+
 let g:ale_open_list = 1
+let g:ale_fix_on_save = 1
+let g:ale_lint_delay = 200
 
 " nmap <silent> <C-[> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-]> <Plug>(ale_next_wrap)
@@ -212,7 +218,6 @@ hi Search ctermfg=Red
 " TYPESCRIPT - YouCompleteMe
 "let g:ycm_auto_trigger=1
 " keybind : from http://blog.jobbole.com/58978/
-let g:ale_open_list = 0
 set completeopt-=preview " Disable the preview window on completion
 " let g:ycm_add_preview_to_completeopt = 0
 
