@@ -60,6 +60,12 @@ let g:ale_fixers = {
 \ 'typescript': ['prettier'],
 \}
 
+let g:ale_pattern_options = {
+\'backend-application': {'ale_fixers': [], 'ale_linters': ['eslint']},
+\'.js$': {'ale_fixers': [], 'ale_linters': ['eslint']},
+\'node_modules': {'ale_fixers': [], 'ale_linters': ['eslint']},
+\}
+
 let g:ale_open_list = 1
 let g:ale_fix_on_save = 1
 let g:ale_lint_delay = 200
