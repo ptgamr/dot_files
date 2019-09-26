@@ -221,6 +221,10 @@ endif
 hi Search ctermbg=LightYellow
 hi Search ctermfg=Red
 
+" ALE & YouCompleteMe highlighting
+" hi ALEError guibg=green ctermbg=green cterm=undercurl
+hi YcmErrorSection ctermbg=none cterm=underline
+
 " TYPESCRIPT - YouCompleteMe
 "let g:ycm_auto_trigger=1
 " keybind : from http://blog.jobbole.com/58978/
