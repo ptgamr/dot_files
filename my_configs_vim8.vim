@@ -235,3 +235,12 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>ff :YcmCompleter FixIt<CR>
+
+" =================== BACKUP ===================
+set backup
+set backupdir=~/.vim_backups/
+set writebackup
+set backupcopy=yes
+"Meaningful backup name, ex: filename@2015-04-05.14:59
+au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+
