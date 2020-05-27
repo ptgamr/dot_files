@@ -29,18 +29,21 @@ python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev git
 cd ~
 git clone https://github.com/vim/vim.git
 cd vim
-./configure --with-x --with-features=huge \
+./configure --with-features=huge \
             --enable-multibyte \
-	    --enable-pythoninterp=yes \
-	    --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \ # pay attention here, check if dir correct
-	    --enable-python3interp=yes \
-	    --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \ # pay attention
-	    --enable-perlinterp=yes \
-	    --enable-luainterp=yes \
+            --enable-python3interp=yes \
+            --with-python3-config-dir=$(python3-config --configdir) \
+            --enable-perlinterp=yes \
+            --enable-luainterp=yes \
+            --enable-gui=gtk2 \
             --enable-cscope \
-	   --prefix=/usr/local
+            --prefix=/usr/local
 
 sudo make install
+
+or 
+
+sudo checkinstall 
 ```
 
 And then go to `~/.vim_runtime/my_plugins`:
