@@ -163,6 +163,7 @@ Cheers
 
 #### UBUNTU 20.04 after suspend, Chrome rendering problem
 
+https://askubuntu.com/questions/1273399/problems-with-chrome-browser-after-suspend-the-computer-on-ubuntu-20-04
 https://askubuntu.com/questions/1270689/chrome-causing-weird-flickering-since-upgrade-to-85-0-4183-83/1272506#1272506
 
 Enable ignore-gpu-blacklist and enable-vulkan in chrome://flags fixed it.
