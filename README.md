@@ -157,3 +157,11 @@ EndSection
 https://askubuntu.com/questions/1122513/how-to-add-natural-inverted-mouse-scrolling-in-i3-window-manager
 
 Cheers
+
+
+### Troubeshootings
+
+UBUNTU 20.04 after suspend, Chrome rendering problem
+https://askubuntu.com/questions/1270689/chrome-causing-weird-flickering-since-upgrade-to-85-0-4183-83/1272506#1272506
+
+Enable ignore-gpu-blacklist and enable-vulkan in chrome://flags fixed it.
