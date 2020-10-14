@@ -56,7 +56,7 @@ python3 install.py --all
 
 or 
 
-python3 install.py --ts-completer # for TypeScript only
+python3 install.py --ts-completer --rust-completer # for TypeScript & Rust only
 ```
 
 - JavaScript and TypeScript support: install Node.js and npm, navigate to `YouCompleteMe/third_party/ycmd` and run `npm install -g --prefix third_party/tsserver typescript`.
