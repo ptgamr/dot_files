@@ -230,7 +230,20 @@ hi Search ctermfg=Red
 
 " ALE & YouCompleteMe highlighting
 " hi ALEError guibg=green ctermbg=green cterm=undercurl
-hi YcmErrorSection ctermbg=none cterm=underline
+" hi YcmErrorSection ctermbg=none cterm=underline
+
+" Fix colors of YCM
+highlight YcmWarningSign guibg=LightYellow ctermbg=LightYellow
+highlight YcmErrorSign guibg=Red ctermbg=Red
+" highlight YcmErrorLine guibg=Red ctermbg=Red
+" highlight YcmWarningLine guibg=LightYellow ctermbg=LightYellow
+" highlight YcmWarningSection guibg=LightYellow ctermbg=LightYellow
+" highlight YcmErrorSection guibg=Red ctermbg=Red
+highlight YcmErrorLine None
+highlight YcmWarningLine None
+highlight YcmWarningSection None
+highlight YcmErrorSection None
+
 
 " TYPESCRIPT - YouCompleteMe
 "let g:ycm_auto_trigger=1
