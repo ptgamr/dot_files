@@ -142,6 +142,8 @@ ag readme -l --ignore-dir="*.rb"
 You might want to comment out bellow lines if you want to have tab switching using `Leader + 1, Leader + 2`  inside a `.py` file:
 
 ```
+// inside ~/.vim_runtime/vimrcs/filetypes.vim
+
 au FileType python inoremap <buffer> $f # --- <esc>a
 " au FileType python map <buffer> <leader>1 /class
 " au FileType python map <buffer> <leader>2 /def
