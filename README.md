@@ -137,6 +137,18 @@ ag readme -l --ignore-dir=railties/lib --ignore-dir=guides/code
 ag readme -l --ignore-dir="*.rb"
 ```
 
+### Python
+
+You might want to comment out bellow lines if you want to have tab switching using `Leader + 1, Leader + 2`  inside a `.py` file:
+
+```
+au FileType python inoremap <buffer> $f # --- <esc>a
+" au FileType python map <buffer> <leader>1 /class
+" au FileType python map <buffer> <leader>2 /def
+au FileType python map <buffer> <leader>C ?class
+
+```
+
 ### Ubuntu Natural scrolling
 
 `/usr/share/X11/xorg.conf.d/40-libinput.conf`
