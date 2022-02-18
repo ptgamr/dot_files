@@ -1,6 +1,6 @@
 ### Git: Prune local tags
 
 ```
-git fetch --prune origin +refs/tags/*:refs/tags/*
+git fetch --prune <remote> "+refs/tags/*:refs/tags/*"
 ```
 
