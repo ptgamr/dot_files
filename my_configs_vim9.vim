@@ -265,4 +265,3 @@ set backupcopy=yes
 " Meaningful backup name, ex: filename@2015-04-05.14:59
 " support full path of the file to avoid name collision
 au BufWritePre * let &bex = substitute(expand('%:p:h'), '/', '%', 'g') . '@' . strftime("%F.%H:%M")
-
