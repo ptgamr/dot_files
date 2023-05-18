@@ -28,7 +28,6 @@ font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-floating_minimum_size 1440 x 900
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -45,23 +44,24 @@ bindsym $mod+d exec dmenu_run
 
 # change focus
 bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+k focus up
+bindsym $mod+j focus down
+# bindsym $mod+semicolon focus right
 
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
+bindsym $mod+Control+h workspace prev_on_output
+bindsym $mod+Control+l workspace next_on_output
 
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Left focus output left
+bindsym $mod+Down focus output down
+bindsym $mod+Up focus output up
+bindsym $mod+Right focus output right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# doesn't work, as alt will clash with Chrome back behavior
+# bindsym mod1+Left focus left
+# bindsym mod1+Down focus down
+# bindsym mod1+Up focus up
+# bindsym mod1+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -84,7 +84,7 @@ bindsym $mod+Shift+greater move container to output up
 bindsym $mod+Shift+less move container to output down
 
 # split in horizontal orientation
-bindsym $mod+Shift+v split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -133,6 +133,15 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+################
+# CUSTOMIZATION
+# ##############
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Ctrl+Right workspace next_on_output
+bindsym $mod+Ctrl+Left workspace prev_on_output
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -164,77 +173,88 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Ctrl+Shift+Right resize shrink width 10 px or 10 ppt
-bindsym $mod+Ctrl+Shift+Up resize grow height 10 px or 10 ppt
-bindsym $mod+Ctrl+Shift+Down resize shrink height 10 px or 10 ppt
-bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
-
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# bar {
-#        status_command i3status
-#        tray_output primary
-#}
-
-exec --no-startup-id "synclient NaturalScrolling=1 VertScrollDelta=-113"
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-	#position top
-        # status_command i3status -c ~/.i3/i3status.conf
-        status_command py3status -c ~/.i3/i3status.conf
-	#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-	#font pango: Ubuntu Mono 12
-	colors {
-        	# Whole color settings
-        	background #000000
-        	statusline #ffffff
-        	separator  #666666
-
-        	# Type             border  background font
-        	focused_workspace  #3465A4 #3465A4 #ffffff
-        	active_workspace   #5f676a #5f676a #ffffff
-        	inactive_workspace #222222 #222222 #888888
-        	urgent_workspace   #aa0000 #990000 #ffffff
-    }
+  # position top
+  # status_command i3status
+  status_command py3status -c ~/.i3/i3status.conf
+  tray_output primary
 }
-
-client.focused          #3465A4 #3465A4 #ffffff #3465A4
-
-exec --no-startup-id "nm-applet"
-#exec --no-startup-id dropbox start
-
-#bindsym $mod+p exec "xtrlock"
-
-bindsym $mod+m bar mode toggle
-#bindsym $mod+Shift+x exec "i3lock -i /home/anh/Dropbox/wallpapers/savoy_france.jpg"
-bindsym $mod+Shift+x exec /home/anh/.i3/i3lock-fancy-multimonitor/lock
-
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && killall notify-osd && notify-send "Volume up `amixer -D pulse sget Master | grep -oE -m1 "[[:digit:]]*%"`" && paplay /usr/share/sounds/ubuntu/stereo/message.ogg
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && killall notify-osd && notify-send "Volume down `amixer -D pulse sget Master | grep -oE -m1 "[[:digit:]]*%"`" && paplay /usr/share/sounds/ubuntu/stereo/message.ogg
 bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && killall notify-osd && notify-send "Brightness up `xbacklight | grep -oP '.*?(?=\.)'`%"
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && killall notify-osd && notify-send "Brightness down `xbacklight | grep -oP '.*?(?=\.)'`%"
+bindsym XF86Launch5 exec "redshift -P -O 3000"
+bindsym XF86Launch6 exec "redshift -P -O 3500"
+bindsym XF86Launch7 exec "redshift -P -O 4000"
+bindsym XF86Launch8 exec "redshift -P -O 5000"
+bindsym XF86Launch9 exec "redshift -P -O 6000"
+
+bindsym XF86AudioNext exec "redshift -P -O 5000"
+bindsym XF86AudioPrev exec "redshift -P -O 3500"
+bindsym XF86AudioStop exec "redshift -P -O 6500"
+
+bindsym mod1+Control+Shift+G exec google-chrome
+
+# Natural scrolling
+exec --no-startup-id "synclient NaturalScrolling=1 VertScrollDelta=-113"
+
+# Dropbox
+exec --no-startup-id exec ~/.dropbox-dist/dropboxd
+
+# Lock
+bindsym $mod+Shift+x exec /home/ptgamr/.i3/i3lock-fancy/lock -- scrot
+
+# Screenshot
+bindsym --release Ctrl+Shift+3 exec "scrot -s -e 'mv $f ~/Pictures/screenshots'"
+bindsym --release Ctrl+Shift+4 exec "scrot -e 'mv $f ~/Pictures/screenshots'"
+
+focus_on_window_activation none
+
+
+# Floating
+# floating_minimum_size 1200x1200
+
+bindsym F1 workspace 1
+bindsym F2 workspace 2
+bindsym F3 workspace 3
+bindsym F4 workspace 4
+# bindsym F5 workspace 5
+bindsym F9 workspace 9
+bindsym F8 workspace 8
+bindsym F7 workspace 7
+bindsym F6 workspace 6
 
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id /home/anh/.i3/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id /home/anh/.i3/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id /home/anh/.i3/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id /home/anh/.i3/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id /home/anh/.i3/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id /home/anh/.i3/i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id /home/ptgamr/.i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id /home/ptgamr/.i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id /home/ptgamr/.i3/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id /home/ptgamr/.i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/ptgamr/.i3/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/ptgamr/.i3/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+Home mode "$mode_system"
+
+for_window [title="Figure 1"] floating enable
+for_window [title="Figure 2"] floating enable
+for_window [title="SportContract Companion App"] floating enable
+
+assign [title="SportContract Companion App"] output HDMI-1
+
+exec --no-startup-id dbus-launch nm-applet
+exec --no-startup-id xsetroot -solid "#333333"
+
+exec --no-startup-id xrdb ~/.Xresources
+
+exec_always --no-startup-id sleep 1; xset dpms 0 0 300
