@@ -208,7 +208,7 @@ exec --no-startup-id "synclient NaturalScrolling=1 VertScrollDelta=-113"
 exec --no-startup-id exec ~/.dropbox-dist/dropboxd
 
 # Lock
-bindsym $mod+Shift+x exec /home/ptgamr/.i3/i3lock-fancy/lock -- scrot
+bindsym $mod+Shift+x exec /home/ptgamr/.i3/i3lock-fancy/lock -- scrot -z -o
 
 # Screenshot
 bindsym --release Ctrl+Shift+3 exec "scrot -s -e 'mv $f ~/Pictures/screenshots'"
