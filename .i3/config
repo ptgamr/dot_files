@@ -208,7 +208,11 @@ exec --no-startup-id "synclient NaturalScrolling=1 VertScrollDelta=-113"
 exec --no-startup-id exec ~/.dropbox-dist/dropboxd
 
 # Lock
-bindsym $mod+Shift+x exec /home/ptgamr/.i3/i3lock-fancy/lock -- scrot -z -o
+# git clone https://github.com/meskarune/i3lock-fancy ~/.i3/i3lock-fancy
+# modify the icon dir inside i3lock-fancy script
+# note the scrot -o option is neccessary, otherwise it won't override the tmp file
+# resulting in the image not being written
+bindsym $mod+Shift+x exec /home/ptgamr/.i3/i3lock-fancy/i3lock-fancy -- scrot -o -z
 
 # Screenshot
 bindsym --release Ctrl+Shift+3 exec "scrot -s -e 'mv $f ~/Pictures/screenshots'"
