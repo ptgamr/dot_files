@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 lock() {
-    i3lock -c 000000
+    i3lock
 }
-DISTRO=$(gawk -F= '/^NAME/{print substr($2, 2, length($2)-2)}' /etc/os-release)
 
 case "$1" in
     lock)
@@ -12,40 +11,16 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        if [ "$DISTRO" == "Ubuntu" ]
-        then
-            lock && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true
-        elif [ "$DISTRO" == "Arch Linux" ]
-        then
-            lock && systemctl suspend
-        fi
+        zenity --question --text "Did you turn off all GPU process ???" && zenity --question --text "HEATERR!!!!" && lock && systemctl suspend
         ;;
     hibernate)
-        if [ "$DISTRO" == "Ubuntu" ]
-        then
-            lock && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Hibernate" boolean:true
-        elif [ "$DISTRO" == "Arch Linux" ]
-        then
-            lock && systemctl hibernate
-        fi
+        lock && systemctl hibernate
         ;;
     reboot)
-        if [ "$DISTRO" == "Ubuntu" ]
-        then
-            dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true
-        elif [ "$DISTRO" == "Arch Linux" ]
-        then
-            systemctl reboot
-        fi
+        systemctl reboot
         ;;
     shutdown)
-        if [ "$DISTRO" == "Ubuntu" ]
-        then
-            dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
-        elif [ "$DISTRO" == "Arch Linux" ]
-        then
-            systemctl poweroff -i
-        fi
+        systemctl poweroff
         ;;
     *)
         echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
