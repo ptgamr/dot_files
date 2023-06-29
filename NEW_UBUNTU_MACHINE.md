@@ -48,3 +48,23 @@ https://askubuntu.com/questions/1122513/how-to-add-natural-inverted-mouse-scroll
 ```
  xset r rate 300 40
 ```
+
+
+### NVIDIA drivers
+
+
+https://www.linuxcapable.com/install-nvidia-drivers-on-ubuntu-linux/
+
+
+```bash
+# With new installation, nouveau is often the default:
+
+lsmod | grep nouveau
+
+# List recommended drivers
+ubuntu-drivers devices
+
+# select recommended one and install
+
+sudo apt install nvidia-driver-530
+```
