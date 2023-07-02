@@ -64,6 +64,7 @@ let g:NERDTreeWinPos = "left"
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
 \ 'typescript': ['eslint'],
+\ 'typescriptreact': ['eslint'],
 \ 'python': ['flake8']
 \}
 
@@ -71,6 +72,7 @@ let g:ale_fixers = {
 \ 'javascript': ['prettier'],
 \ 'html': ['prettier'],
 \ 'typescript': ['prettier'],
+\ 'typescriptreact': ['prettier'],
 \ 'handlebars': ['prettier'],
 \ 'python': ['black'],
 \}
