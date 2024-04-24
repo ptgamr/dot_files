@@ -14,6 +14,16 @@ Notes:
 because of issue https://github.com/chriskempson/base16-vim/issues/197 , 
 use this fork instead until the PR landed on master: https://github.com/danielwe/base16-vim
 
+Notes: (to not have base16 applied in VSCODE, adding the term check) 
+```
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ "$TERM_PROGRAM" != "vscode" ] &&
+  [ -n "$PS1" ] && \
+      [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+          source "$BASE16_SHELL/profile_helper.sh"
+
+```
+
 ### INSTALL YouCompleteMe
 
 Recompile Vim with Python support: https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
