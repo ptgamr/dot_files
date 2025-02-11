@@ -1,11 +1,13 @@
 ### General
 
 ```
-sudo apt install tmux
-sudo apt install i3
-sudo apt install terminator
-sudo apt install pulseaudio
-sudo apt install blueman
+# programming
+sudo apt install tmux i3 terminator
+
+# audio
+sudo apt install blueman pulseaudio pavucontrol
+
+# i3 status
 sudo apt install pipx
 pipx install py3status
 ```
