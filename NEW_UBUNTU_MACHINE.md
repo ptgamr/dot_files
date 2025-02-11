@@ -1,3 +1,15 @@
+### General
+
+```
+sudo apt install tmux
+sudo apt install i3
+sudo apt install terminator
+sudo apt install pulseaudio
+sudo apt install blueman
+sudo apt install pipx
+pipx install py3status
+```
+
 ### TMUX
 
 except `~/.tmux.conf`, need to clone this repo to `~/.tmux` for plugins
