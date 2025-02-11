@@ -17,6 +17,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 gtk-application-prefer-dark-theme=1
 ```
 
+24.04:
+
+```
+echo "export GTK_THEME=Adwaita:dark" >> ~/.profile
+```
+
 
 ### Natuaral scrolling
 
