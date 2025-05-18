@@ -12,6 +12,14 @@ $ cp -r ~/Downloads/tilingshell@ferrarodomenico.com ~/.local/share/gnome-shell/e
 $ /usr/bin/gnome-extensions enable tilingshell@ferrarodomenico.com
 ```
 
+### Gnome browser integration
+
+https://chromewebstore.google.com/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep?hl=en
+
+```
+sudo apt-get install gnome-browser-connector
+```
+
 ### Launching of Terminator
 
 - Create new custom hotkey `Super + Enter` (Settings > Keyboard > Customised Shortcuts)
