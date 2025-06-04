@@ -88,3 +88,20 @@ ubuntu-drivers devices
 
 sudo apt install nvidia-driver-530
 ```
+
+
+### If screen does not turn blank after X mins of inactivity
+
+```
+ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'blank'
+ gsettings set org.gnome.desktop.session idle-delay 120
+ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 120
+```
+
+
+### Update font size of GTK app (if too small on 4k screen)
+
+```
+vim ~/.config/gtk-3.0/settings.ini
+gtk-font-name=DejaVu, 14
+```
